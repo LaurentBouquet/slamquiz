@@ -1,9 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Category index
+{% endblock %}
 
 {% block body %}
     <h1>Category index</h1>
+
+    <div class="mb-3">
+        <a class="btn btn-primary" href="{{ path('category_new') }}">
+            <i class="fas fa-plus"></i>
+            Create new</a>
+    </div>
 
     <table class="table">
         <thead>
@@ -15,23 +22,22 @@
             </tr>
         </thead>
         <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.shortname }}</td>
-                <td>{{ category.longname }}</td>
-                <td>
-                    <a class="btn btn-primary" href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.shortname }}</td>
+                    <td>{{ category.longname }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('category_show', {'id': category.id}) }}"><i class="fas fa-eye"></i> Show</a>
+                        <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}"><i class="fas fa-pencil-alt"></i> Edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
-    <a class="btn btn-primary" href="{{ path('category_new') }}">Create new</a>
 {% endblock %}
