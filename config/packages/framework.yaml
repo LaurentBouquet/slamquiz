@@ -17,4 +17,4 @@ framework:
 
     #enable or disable translation
     translator:
-      enabled: false
+      enabled: true

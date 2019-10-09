@@ -4,21 +4,21 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+    <h1>{{ 'Category index'|trans }}</h1>
 
     <div class="mb-3">
         <a class="btn btn-primary" href="{{ path('category_new') }}">
             <i class="fas fa-plus"></i>
-            Create new</a>
+            {{ 'Create new category'|trans }}</a>
     </div>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Shortname</th>
-                <th>Longname</th>
-                <th>actions</th>
+                <th>{{ 'Id'|trans }}</th>
+                <th>{{ 'Shortname'|trans }}</th>
+                <th>{{ 'Longname'|trans }}</th>
+                <th>{{ 'Actions'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -28,8 +28,8 @@
                     <td>{{ category.shortname }}</td>
                     <td>{{ category.longname }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ path('category_show', {'id': category.id}) }}"><i class="fas fa-eye"></i> Show</a>
-                        <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}"><i class="fas fa-pencil-alt"></i> Edit</a>
+                        <a class="btn btn-primary" href="{{ path('category_show', {'id': category.id}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
+                        <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}"><i class="fas fa-pencil-alt"></i> {{ 'Edit'|trans }}</a>
                     </td>
                 </tr>
             {% else %}
