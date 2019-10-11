@@ -28,8 +28,16 @@
                     <td>{{ category.shortname }}</td>
                     <td>{{ category.longname }}</td>
                     <td>
-                        <a class="btn btn-primary" href="{{ path('category_show', {'id': category.id}) }}"><i class="fas fa-eye"></i> {{ 'Show'|trans }}</a>
-                        <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}"><i class="fas fa-pencil-alt"></i> {{ 'Edit'|trans }}</a>
+                        {% if is_granted('ROLE_USER') %}
+                            <a class="btn btn-primary" href="{{ path('category_show', {'id': category.id}) }}">
+                                <i class="fas fa-eye"></i>
+                                {{ 'Show'|trans }}</a>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a class="btn btn-primary" href="{{ path('category_edit', {'id': category.id}) }}">
+                                <i class="fas fa-pencil-alt"></i>
+                                {{ 'Edit'|trans }}</a>
+                        {% endif %}
                     </td>
                 </tr>
             {% else %}
