@@ -31,9 +31,12 @@
                             <a class="nav-link" href="{{ path('category_index') }}">{{ 'Category'|trans }}</a>
                         </li>
                     {% endif %}
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('user_index') }}">{{ 'User'|trans }}</a>
+                        </li>
+                    {% endif %}
                 </ul>
-
-
                 <ul class="navbar-nav">
                     {% if is_granted('ROLE_USER') %}
                         <li>
