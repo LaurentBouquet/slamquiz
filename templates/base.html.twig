@@ -26,15 +26,35 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">{{ 'Home'|trans }}</a>
-                    </li>
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('category_index') }}">{{ 'Category'|trans }}</a>
                         </li>
                     {% endif %}
-                    <a class="nav-link" href="/login">{{ 'Login'|trans }}</a>
+                </ul>
+
+
+                <ul class="navbar-nav">
+                    {% if is_granted('ROLE_USER') %}
+                        <li>
+                            <div class="nav-link disabled">
+                                <i class="fas fa-user"></i>
+                                {% if app.user %}
+                                    <strong>{{ app.user.username }}</strong>
+                                {% endif %}
+                            </div>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ path('app_logout') }}">{{'Logout'|trans}}</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a class="nav-link {% if '/app_login' in app.request.server.get('REQUEST_URI') %} active {% endif %}" href="{{ path('app_login') }}">{{'Sign up'|trans}}</a>
+                        </li>
+                        <li>
+                            <a class="nav-link {% if '/app_login' in app.request.server.get('REQUEST_URI') %} active {% endif %}" href="{{ path('app_login') }}">{{'Sign in'|trans}}</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
