@@ -25,7 +25,7 @@ class UserFixtures extends Fixture
 
         $user->setPassword($this->passwordEncoder->encodePassword(
             $user,
-            '$argon2i$v=19$m=65536,t=4,p=1$QlV3V2ptcHNrcU1DcnpKeA$E4APHqYpPFmNuPHMSp6ojyA65eSmRvJ5SkgnE2kNFz8'
+            'azerty'
         ));
 
         $manager->persist($user);
