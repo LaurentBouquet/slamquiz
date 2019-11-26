@@ -1,20 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}{{'Welcome!'|trans}}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="example-wrapper">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="jumbotron">
+            <h3>{{'Need to check on students’ performance?'|trans}}</h3>
+            <h6>{{'Here is the tool you need!'|trans}} {{'SlamQuiz is an online quiz software.'|trans}} {{'A simple and free tool.'|trans}}</h6>
+            <hr class="my-4">
+            <h3>{{'Features'|trans}}</h3>
+            <ul>
+                <li>{{'Motivating interactive content'|trans}}</li>
+                <li>
+                    {{'Automatic scoring'|trans}}
+                </li>
+                <li>
+                    {{'Real-time activity tracking (receive the results of students by email)'|trans}}
+                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="not yet implemented">
+                        <i class="fas fa-clock"></i>
+                    </span>
+                </li>
+                <li>
+                    {{'Test your audience via smartphone and provide live results during a presentation'|trans}}
+                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="not yet implemented">
+                        <i class="fas fa-clock"></i>
+                    </span>
+                </li>
+            </ul>
+            <p>{{'License:'|trans}} {{'It is free software that you can copy and modify.'|trans}}</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/LB/php/slamquiz/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/LB/php/slamquiz/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <a class="btn btn-primary float-md-right" href="{{ path('app_login') }}" role="button">{{ 'Let\'s start now'|trans}} <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+
+    </div>
+
 {% endblock %}

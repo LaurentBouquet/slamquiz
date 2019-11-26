@@ -337,9 +337,9 @@
         <source>Need to check on students’ performance?</source>
         <target>Besoin de vérifier la performance de vos élèves ?</target>
       </trans-unit>
-      <trans-unit id="Cr_2UHK" resname="JoliQuiz is an online quiz software.">
-        <source>JoliQuiz is an online quiz software.</source>
-        <target>JoliQuiz est un logiciel de QCM en ligne.</target>
+      <trans-unit id="Cr_2UHK" resname="SlamQuiz is an online quiz software.">
+        <source>SlamQuiz is an online quiz software.</source>
+        <target>SlamQuiz est un logiciel de QCM en ligne.</target>
       </trans-unit>
       <trans-unit id="GHIguwW" resname="A simple and free tool.">
         <source>A simple and free tool.</source>

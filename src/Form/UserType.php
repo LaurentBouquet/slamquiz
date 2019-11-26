@@ -16,7 +16,7 @@ class UserType extends AbstractType
         $builder
             ->add('email')
             ->add('roles', ChoiceType::class, [
-                'multiple' => true,
+                'multiple' => true, // render multi-selection
                 'expanded' => true, // render check-boxes
                 'choices' => [
                     'User' => 'ROLE_USER',
