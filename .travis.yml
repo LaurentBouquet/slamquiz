@@ -1,0 +1,18 @@
+language: php
+
+php:
+  - '7.3'
+
+before_script:
+  - psql -c "CREATE USER octoweb WITH PASSWORD 'db_password';" -U postgres
+  - psql -c "CREATE DATABASE slamquiz;" -U postgres
+  - psql -c "GRANT ALL PRIVILEGES ON DATABASE slamquiz TO slamquiz;" -U postgres
+
+env:
+    - DATABASE_URL="pgsql://slamquiz:db_password@127.0.0.1:5432/slamquiz"
+
+script:
+   - composer install
+   - bin/console doctrine:migrations:migrate -n
+   - bin/console doctrine:fixtures:load -q
+   - bin/phpunit
