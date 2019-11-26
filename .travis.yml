@@ -3,8 +3,11 @@ language: php
 php:
   - '7.3'
 
+services:
+  - postgresql
+
 before_script:
-  - psql -c "CREATE USER octoweb WITH PASSWORD 'db_password';" -U postgres
+  - psql -c "CREATE USER slamquiz WITH PASSWORD 'db_password';" -U postgres
   - psql -c "CREATE DATABASE slamquiz;" -U postgres
   - psql -c "GRANT ALL PRIVILEGES ON DATABASE slamquiz TO slamquiz;" -U postgres
 
