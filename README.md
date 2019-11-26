@@ -7,9 +7,6 @@ SlamQuiz is an online quiz software, a PHP web application developed using the S
 
 Thanks to [Symfony](https://symfony.com/)
 
-## Screenshot 
-![Home page](https://raw.githubusercontent.com/LaurentBouquet/slamquiz/assets/screenshot_home.png?raw=true)
-
 ## Installation
 
 ### 1) Get all source files
@@ -129,8 +126,6 @@ php bin/console server:start
 ### 4) With your web browser open url where server is listening on
 
 For example, with your browser open this page :  http://127.0.0.1:8000 and GO !
-
-![Workout page](https://raw.githubusercontent.com/LaurentBouquet/slamquiz/assets/home_page.png?raw=true)
 
 Here is initial credentials of the student user.
  - Username : user
