@@ -1,11 +1,11 @@
 # SlamQuiz
 
-[![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master){:target="_blank"}
+[![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)
 
 ## Description
 SlamQuiz is an online quiz software, a PHP web application developed using the Symfony framework (version 4).
 
-Thanks to [Symfony](https://symfony.com/){:target="_blank"}
+Thanks to [Symfony](https://symfony.com/)
 
 ## Installation
 
@@ -51,7 +51,9 @@ doctrine:
         # charset: utf8
 ```
 
-Uncomment and update the password in this line of **.env** file :
+Copy **.env** file to **.env.local**.
+
+Uncomment and update the password in this line of **.env.local** file :
 DATABASE_URL=mysql://slamquiz:**aSecurePassword**@127.0.0.1:3306/slamquiz
 
 
@@ -98,7 +100,9 @@ doctrine:
         charset: utf8
 ```
 
-Uncomment and update the password in this line of **.env** file :
+Copy **.env** file to **.env.local**.
+
+Uncomment and update the password in this line of **.env.local** file :
 DATABASE_URL=pgsql://slamquiz:**aSecurePassword**@127.0.0.1:5432/slamquiz
 
 
