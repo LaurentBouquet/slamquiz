@@ -1,11 +1,11 @@
 # SlamQuiz
 
-[![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)
+[![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master){:target="_blank"}
 
 ## Description
 SlamQuiz is an online quiz software, a PHP web application developed using the Symfony framework (version 4).
 
-Thanks to [Symfony](https://symfony.com/)
+Thanks to [Symfony](https://symfony.com/){:target="_blank"}
 
 ## Installation
 
@@ -128,19 +128,15 @@ php bin/console server:start
 For example, with your browser open this page :  http://127.0.0.1:8000 and GO !
 
 Here is initial credentials of the student user.
- - Username : user
+ - Email : user@domain.tld
  - Password : user
 
-Here is initial credentials of the teacher user.
- - Username : teacher
- - Password : teacher
-
 Here is initial credentials of the admin user.
- - Username : admin
+ - Email : admin@domain.tld
  - Password : admin
 
 Here is initial credentials of the super-admin user.
- - Username : superadmin
+ - Email : superadmin@domain.tld
  - Password : superadmin
 
 
