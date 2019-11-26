@@ -124,7 +124,7 @@ Enter this commands in a terminal prompt :
 # cd slamquiz
 php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load
-php bin/console server:start
+php bin/console server:run
 ```
 
 ### 4) With your web browser open url where server is listening on
