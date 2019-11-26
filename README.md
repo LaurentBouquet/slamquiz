@@ -1,5 +1,7 @@
 # SlamQuiz
 
+[![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)
+
 ## Description
 SlamQuiz is an online quiz software, a PHP web application developed using the Symfony framework (version 4).
 
