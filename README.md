@@ -151,6 +151,13 @@ Here is initial credentials of the super-admin user.
  - Password : superadmin
 
 
+## Live Demo
+
+[https://slamquiz.herokuapp.com/](https://slamquiz.herokuapp.com/)
+
+Thanks to [Heroku](https://www.heroku.com/)
+
+
 ## Contributing
 
 SlamQuiz is an open source project that welcomes pull requests and issues from anyone.
