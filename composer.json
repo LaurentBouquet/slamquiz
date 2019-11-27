@@ -74,12 +74,10 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "scripts": {
-            "compile": [
-                "php bin/console doctrine:migrations:migrate",
-                "psql load initial-prod-data.dump.sql"
-            ]
-        }
+        "compile": [
+            "php bin/console doctrine:migrations:migrate",
+            "psql load initial-prod-data.dump.sql"
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"
