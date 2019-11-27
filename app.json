@@ -1,0 +1,23 @@
+{
+    "name": "SlamQuiz",
+    "description": "Online quiz software",
+    "repository": "https://github.com/LaurentBouquet/slamquiz",
+    "keywords": ["php",
+        "symfony",
+        "quiz",
+        "student",
+        "teacher"
+    ],
+    "addons": [{
+        "plan": "heroku-postgresql",
+        "options": {
+            "version": "11"
+        }
+    }],
+    "env": {
+        "APP_ENV": {
+            "description": "Set the Symfony environment (prod, dev or test)",
+            "value": "prod"
+        }
+    }
+}

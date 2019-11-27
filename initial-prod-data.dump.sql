@@ -17,15 +17,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Data for Name: migration_versions; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY public.migration_versions (version, executed_at) FROM stdin;
-20191026191133	2019-10-26 19:11:47
-\.
-
-
---
 -- Data for Name: tbl_category; Type: TABLE DATA; Schema: public; Owner: -
 --
 
