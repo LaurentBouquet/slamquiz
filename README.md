@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master) 
 [![HitCount](http://hits.dwyl.io/LaurentBouquet/slamquiz.svg)](http://hits.dwyl.io/LaurentBouquet/slamquiz) 
 [![GitHub license](https://img.shields.io/github/license/LaurentBouquet/slamquiz.svg)](https://github.com/LaurentBouquet/slamquiz/blob/master/LICENSE) 
+[![GitHub issues](https://img.shields.io/github/issues/LaurentBouquet/slamquiz.svg)](https://GitHub.com/LaurentBouquet/slamquiz/issues/) 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/LaurentBouquet/slamquiz/issues)
 
 [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
