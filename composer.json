@@ -76,7 +76,7 @@
         ],
         "compile": [
             "php bin/console doctrine:migrations:migrate",
-            "psql < initial-prod-data.dump.sql"
+            "psql load initial-prod-data.dump.sql"
         ]
     },
     "conflict": {
