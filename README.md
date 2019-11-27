@@ -1,6 +1,7 @@
 # SlamQuiz
 
-[![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)
+[![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master) 
+[![HitCount](http://hits.dwyl.io/LaurentBouquet/slamquiz.svg)](http://hits.dwyl.io/LaurentBouquet/slamquiz) 
 
 [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
