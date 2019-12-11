@@ -37,7 +37,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('question_new', {'nb': 2}) }}">Create new question with 2 answers</a><br/>
-    <a href="{{ path('question_new', {'nb': 3}) }}">Create new question with 3 answers</a><br/>
-    <a href="{{ path('question_new', {'nb': 4}) }}">Create new question with 4 answers</a><br/>
+
+    Create new question with
+    <a href="{{ path('question_new', {'nb': 2}) }}"> 2 answers</a>,
+    <a href="{{ path('question_new', {'nb': 3}) }}"> 3 answers</a>
+    or <a href="{{ path('question_new', {'nb': 4}) }}"> 4 answers</a>
 {% endblock %}
