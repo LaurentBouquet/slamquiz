@@ -40,7 +40,7 @@ class Question
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Answer", mappedBy="question")
+     * @ORM\OneToMany(targetEntity="App\Entity\Answer", mappedBy="question", cascade={"persist"})
      */
     private $answers;
 
@@ -48,6 +48,8 @@ class Question
     {
         $this->categories = new ArrayCollection();
         $this->answers = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
     }
 
     public function getId(): ?int
