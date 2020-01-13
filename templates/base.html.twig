@@ -31,6 +31,19 @@
                             <a class="nav-link" href="{{ path('category_index') }}">{{ 'Category'|trans }}</a>
                         </li>
                     {% endif %}
+                    
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('answer_index') }}">Answer</a>
+                        </li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('question_index') }}">Question</a>
+                        </li>
+                    {% endif %}
+
                     {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('user_index') }}">{{ 'User'|trans }}</a>

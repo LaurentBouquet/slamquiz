@@ -12,6 +12,8 @@
 ## Description
 SlamQuiz is an online quiz software, a PHP web application developed using the Symfony framework (version 4).
 
+![Home page](https://raw.githubusercontent.com/LaurentBouquet/slamquiz/master/assets/screenshot_home.png?raw=true)
+
 Thanks to [Symfony](https://symfony.com/)
 
 ## Installation
