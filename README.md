@@ -1,12 +1,20 @@
 # SlamQuiz
 
+[![GitHub release](https://img.shields.io/github/release/LaurentBouquet/slamquiz.svg)](https://GitHub.com/LaurentBouquet/slamquiz/releases/)
+[![Build Status](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master)](https://travis-ci.org/LaurentBouquet/slamquiz.svg?branch=master) 
+[![HitCount](http://hits.dwyl.io/LaurentBouquet/slamquiz.svg)](http://hits.dwyl.io/LaurentBouquet/slamquiz) 
+[![GitHub license](https://img.shields.io/github/license/LaurentBouquet/slamquiz.svg)](https://github.com/LaurentBouquet/slamquiz/blob/master/LICENSE) 
+[![GitHub issues](https://img.shields.io/github/issues/LaurentBouquet/slamquiz.svg)](https://GitHub.com/LaurentBouquet/slamquiz/issues/) 
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/LaurentBouquet/slamquiz/issues)
+
+[![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 ## Description
 SlamQuiz is an online quiz software, a PHP web application developed using the Symfony framework (version 4).
 
-Thanks to [Symfony](https://symfony.com/)
-
-## Screenshot 
 ![Home page](https://raw.githubusercontent.com/LaurentBouquet/slamquiz/assets/screenshot_home.png?raw=true)
+
+Thanks to [Symfony](https://symfony.com/)
 
 ## Installation
 
@@ -52,7 +60,9 @@ doctrine:
         # charset: utf8
 ```
 
-Uncomment and update the password in this line of **.env** file :
+Copy **.env** file to **.env.local**.
+
+Uncomment and update the password in this line of **.env.local** file :
 DATABASE_URL=mysql://slamquiz:**aSecurePassword**@127.0.0.1:3306/slamquiz
 
 
@@ -99,7 +109,9 @@ doctrine:
         charset: utf8
 ```
 
-Uncomment and update the password in this line of **.env** file :
+Copy **.env** file to **.env.local**.
+
+Uncomment and update the password in this line of **.env.local** file :
 DATABASE_URL=pgsql://slamquiz:**aSecurePassword**@127.0.0.1:5432/slamquiz
 
 
@@ -121,30 +133,31 @@ Enter this commands in a terminal prompt :
 # cd slamquiz
 php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load
-php bin/console server:start
+php bin/console server:run
 ```
 
 ### 4) With your web browser open url where server is listening on
 
 For example, with your browser open this page :  http://127.0.0.1:8000 and GO !
 
-![Workout page](https://raw.githubusercontent.com/LaurentBouquet/slamquiz/assets/home_page.png?raw=true)
-
 Here is initial credentials of the student user.
- - Username : user
+ - Email : user@domain.tld
  - Password : user
 
-Here is initial credentials of the teacher user.
- - Username : teacher
- - Password : teacher
-
 Here is initial credentials of the admin user.
- - Username : admin
+ - Email : admin@domain.tld
  - Password : admin
 
 Here is initial credentials of the super-admin user.
- - Username : superadmin
+ - Email : superadmin@domain.tld
  - Password : superadmin
+
+
+## Live Demo
+
+[https://slamquiz.herokuapp.com/](https://slamquiz.herokuapp.com/)
+
+Thanks to [Heroku](https://www.heroku.com/)
 
 
 ## Contributing
