@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Quiz;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Quiz|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,6 +19,13 @@ class QuizRepository extends ServiceEntityRepository
         parent::__construct($registry, Quiz::class);
     }
 
+    public function findAll()
+    {
+        $builder = $this->createQueryBuilder('q');
+        $builder->orderBy('q.title', 'ASC');
+        return $builder->getQuery()->getResult();
+    }
+    
     // /**
     //  * @return Quiz[] Returns an array of Quiz objects
     //  */

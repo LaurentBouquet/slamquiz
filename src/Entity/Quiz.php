@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,7 +26,7 @@ class Quiz
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $summary;
 
@@ -32,11 +34,6 @@ class Quiz
      * @ORM\Column(type="integer")
      */
     private $number_of_questions;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $summary2;
 
     /**
      * @ORM\Column(type="boolean")
@@ -53,6 +50,20 @@ class Quiz
      */
     private $updated_at;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="quizzes")
+     */
+    private $categories;
+
+
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+        $this->categories = new ArrayCollection();
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -94,18 +105,6 @@ class Quiz
         return $this;
     }
 
-    public function getSummary2(): ?string
-    {
-        return $this->summary2;
-    }
-
-    public function setSummary2(?string $summary2): self
-    {
-        $this->summary2 = $summary2;
-
-        return $this;
-    }
-
     public function getActive(): ?bool
     {
         return $this->active;
@@ -138,6 +137,32 @@ class Quiz
     public function setUpdatedAt(\DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+        }
 
         return $this;
     }
