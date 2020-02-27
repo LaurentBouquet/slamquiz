@@ -2,15 +2,16 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\QuestionRepository")
- * @ORM\Table(name="tbl_question")
+ * @ORM\Entity(repositoryClass="App\Repository\QuizRepository")
+ * @ORM\Table(name="tbl_quiz")
  */
-class Question
+class Quiz
 {
     /**
      * @ORM\Id()
@@ -20,9 +21,24 @@ class Question
     private $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
      */
-    private $text;
+    private $title;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $summary;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $number_of_questions;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
 
     /**
      * @ORM\Column(type="datetime")
@@ -35,36 +51,68 @@ class Question
     private $updated_at;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="questions")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="quizzes")
      */
     private $categories;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Answer", mappedBy="question", cascade={"persist"})
-     */
-    private $answers;
+
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
-        $this->answers = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
+        $this->categories = new ArrayCollection();
     }
-
+    
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getText(): ?string
+    public function getTitle(): ?string
     {
-        return $this->text;
+        return $this->title;
     }
 
-    public function setText(string $text): self
+    public function setTitle(string $title): self
     {
-        $this->text = $text;
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSummary(): ?string
+    {
+        return $this->summary;
+    }
+
+    public function setSummary(string $summary): self
+    {
+        $this->summary = $summary;
+
+        return $this;
+    }
+
+    public function getNumberOfQuestions(): ?int
+    {
+        return $this->number_of_questions;
+    }
+
+    public function setNumberOfQuestions(int $number_of_questions): self
+    {
+        $this->number_of_questions = $number_of_questions;
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }
@@ -114,37 +162,6 @@ class Question
     {
         if ($this->categories->contains($category)) {
             $this->categories->removeElement($category);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Answer[]
-     */
-    public function getAnswers(): Collection
-    {
-        return $this->answers;
-    }
-
-    public function addAnswer(Answer $answer): self
-    {
-        if (!$this->answers->contains($answer)) {
-            $this->answers[] = $answer;
-            $answer->setQuestion($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAnswer(Answer $answer): self
-    {
-        if ($this->answers->contains($answer)) {
-            $this->answers->removeElement($answer);
-            // set the owning side to null (unless already changed)
-            if ($answer->getQuestion() === $this) {
-                $answer->setQuestion(null);
-            }
         }
 
         return $this;
