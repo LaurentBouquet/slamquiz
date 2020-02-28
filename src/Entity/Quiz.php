@@ -55,6 +55,11 @@ class Quiz
      */
     private $categories;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Workout", mappedBy="quiz", orphanRemoval=true)
+     */
+    private $workouts;
+
 
 
     public function __construct()
@@ -62,6 +67,7 @@ class Quiz
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
         $this->categories = new ArrayCollection();
+        $this->workouts = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -162,6 +168,37 @@ class Quiz
     {
         if ($this->categories->contains($category)) {
             $this->categories->removeElement($category);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Workout[]
+     */
+    public function getWorkouts(): Collection
+    {
+        return $this->workouts;
+    }
+
+    public function addWorkout(Workout $workout): self
+    {
+        if (!$this->workouts->contains($workout)) {
+            $this->workouts[] = $workout;
+            $workout->setQuiz($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkout(Workout $workout): self
+    {
+        if ($this->workouts->contains($workout)) {
+            $this->workouts->removeElement($workout);
+            // set the owning side to null (unless already changed)
+            if ($workout->getQuiz() === $this) {
+                $workout->setQuiz(null);
+            }
         }
 
         return $this;
