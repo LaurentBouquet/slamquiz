@@ -33,10 +33,23 @@
 						{% endfor %}
 					</td>
 					<td>{{ quiz.active ? 'Yes' : 'No' }}</td>
-					<td>
+					{# <td>
 						<a href="{{ path('quiz_show', {'id': quiz.id}) }}">show</a>
 						<a href="{{ path('quiz_edit', {'id': quiz.id}) }}">edit</a>
-					</td>
+					</td> #}
+					{% if is_granted('ROLE_ADMIN') %}
+						<td>
+							<a href="{{ path('quiz_show', {'id': quiz.id}) }}">show</a>
+							<a href="{{ path('quiz_edit', {'id': quiz.id}) }}">edit</a>
+							<a href="{{ path('workout_new', {'id': quiz.id}) }}">start</a>
+						</td>
+					{% else %}
+						{% if is_granted('ROLE_USER') %}
+						<td>
+							<a href="{{ path('workout_new', {'id': quiz.id}) }}">start</a>
+						</td>
+						{% endif %}
+					{% endif %}
 				</tr>
 			{% else %}
 				<tr>

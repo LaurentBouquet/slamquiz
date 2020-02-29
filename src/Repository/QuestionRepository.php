@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Question;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Question|null find($id, $lockMode = null, $lockVersion = null)
@@ -26,6 +26,18 @@ class QuestionRepository extends ServiceEntityRepository
         return $builder->getQuery()->getResult();
     }
     
+    public function findOneRandomByCategories($categories): ?Question
+    {
+        $builder = $this->createQueryBuilder('q');
+        $builder->innerJoin('q.categories', 'categories');
+        $builder->andWhere($builder->expr()->in('categories', ':categories'))->setParameter('categories', $categories);
+
+        $questions = $builder->getQuery()->getResult();
+        $question = $questions[rand(1, sizeof($questions))-1];
+
+        return $question;
+    }
+        
     // /**
     //  * @return Question[] Returns an array of Question objects
     //  */

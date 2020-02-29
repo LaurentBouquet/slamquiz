@@ -28,6 +28,14 @@ class Answer
     private $correct;
 
     /**
+     * This field will not be persisted
+     * It is used to store the answer given by student (type="boolean") in the form
+     */
+    private $workout_correct_given = false;
+
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Question", inversedBy="answers")
      */
     private $question;
@@ -72,4 +80,17 @@ class Answer
 
         return $this;
     }
+
+    public function getWorkoutCorrectGiven(): ?bool
+    {
+        return $this->workout_correct_given;
+    }
+
+    public function setWorkoutCorrectGiven(bool $workout_correct_given): self
+    {
+        $this->workout_correct_given = $workout_correct_given;
+
+        return $this;
+    }
+
 }
