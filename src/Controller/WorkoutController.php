@@ -30,55 +30,71 @@ class WorkoutController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="workout_new", methods={"GET"})
+     * @Route("/{id}", name="workout_new", methods={"GET","POST"})
      */
     public function new(Request $request, int $id, EntityManagerInterface $em): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        
         $quizRepository = $em->getRepository(Quiz::class);
         $quiz = $quizRepository->findOneBy([
             'id' => $id
         ]);
-        dump($quiz);
-        
+      
         $workout = new Workout();
         $workout->setStartedAt(new \DateTime());
-        //$workout->setEndedAt(new \DateTime());
         $workout->setQuiz($quiz);
-        $workout->setNumberOfQuestions(1);
+        $workout->setCurrentQuestionNumber(0);
         $workout->setCompleted(false);
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($workout);
-        $entityManager->flush();
-
-        $questionRepository = $em->getRepository(Question::class);
-        $nextQuestion = $questionRepository->findOneRandomByCategories($quiz->getCategories());
-        $form = $this->createForm(QuestionType::class, $nextQuestion, array('form_type'=>'student_questioning'));
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-
-            // return $this->redirectToRoute('workout_next');
-        }
+        $em->persist($workout);
+        $em->flush();
 
         return $this->render('workout/new.html.twig', [
             'workout' => $workout,
             'quiz' => $quiz,
-            'progress' => ($workout->getNumberOfQuestions()/$quiz->getNumberOfQuestions())*100,
-            'form' => $form->createView(),
+            'progress' => ($workout->getCurrentQuestionNumber()/$quiz->getNumberOfQuestions())*100,
         ]);
     }
 
     /**
-     * @Route("/{id}", name="workout_next", methods={"GET"})
+     * @Route("/{id}/next", name="workout_next", methods={"GET","POST"})
      */
-    public function next(Workout $workout): Response
+    public function next(Request $request, Workout $workout, EntityManagerInterface $em): Response
     {
-        return $this->render('workout/show.html.twig', [
-            'workout' => $workout,
+        $this->denyAccessUnlessGranted('ROLE_USER');
+
+        $workout->setCurrentQuestionNumber($workout->getCurrentQuestionNumber()+1);  
+        
+        $quizRepository = $em->getRepository(Quiz::class);
+        $quiz = $quizRepository->findOneBy([
+            'id' => $workout->getQuiz()
         ]);
-    }
+       
+        $questionRepository = $em->getRepository(Question::class);
+        $lastQuestion = $questionRepository->findOneById($workout->getLastQuestionId());
+        $form = $this->createForm(QuestionType::class, $lastQuestion, array('form_type'=>'student_questioning'));
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $lastAnswers = $lastQuestion->getAnswers();            
+            foreach ($lastAnswers as $answer) {
+                dump($answer);
+            }                     
+        }
+        
+        $nextQuestion = $questionRepository->findOneRandomByCategories($quiz->getCategories());
+        $workout->setLastQuestionId($nextQuestion->getId());
+        $form = $this->createForm(QuestionType::class, $nextQuestion, array('form_type'=>'student_questioning'));
+
+        $em->persist($workout);
+        $em->flush();      
+        
+        return $this->render('workout/workout.html.twig', [
+            'workout' => $workout,
+            'quiz' => $quiz,
+            'progress' => ($workout->getCurrentQuestionNumber()/$quiz->getNumberOfQuestions())*100,
+            'form' => $form->createView(),
+        ]);
+    }    
 
     /**
      * @Route("/{id}", name="workout_show", methods={"GET"})

@@ -23,7 +23,7 @@ final class Version20200227165515 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE SEQUENCE tbl_quiz_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE tbl_quiz (id INT NOT NULL, title VARCHAR(255) NOT NULL, summary TEXT NOT NULL, number_of_questions INT NOT NULL, active BOOLEAN NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE tbl_quiz (id INT NOT NULL, title VARCHAR(255) NOT NULL, summary TEXT NOT NULL, current_question_number INT NOT NULL, active BOOLEAN NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))');
     }
 
     public function down(Schema $schema) : void

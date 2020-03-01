@@ -14,7 +14,7 @@ class WorkoutType extends AbstractType
         $builder
             ->add('started_at')
             ->add('ended_at')
-            ->add('number_of_questions')
+            ->add('current_question_number')
             ->add('completed')
             ->add('score')
             ->add('quiz')

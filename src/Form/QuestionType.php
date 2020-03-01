@@ -27,6 +27,7 @@ class QuestionType extends AbstractType
                         'entry_type' => AnswerType::class,
                         'entry_options' => array(
                             'label' => false,
+                            'form_type' => 'student_questioning',
                         ),
                     ));
                 break;
@@ -52,7 +53,7 @@ class QuestionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Question::class,
-            'form_type' => 'student_questioning',            
+            'form_type' => 'teacher',
         ]);
     }
 }

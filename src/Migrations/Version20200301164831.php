@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200228095019 extends AbstractMigration
+final class Version20200301164831 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,10 +22,7 @@ final class Version20200228095019 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
-        $this->addSql('CREATE SEQUENCE tbl_workout_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE tbl_workout (id INT NOT NULL, quiz_id INT NOT NULL, started_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, ended_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, current_question_number INT NOT NULL, completed BOOLEAN NOT NULL, score DOUBLE PRECISION DEFAULT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE INDEX IDX_3FCCF306853CD175 ON tbl_workout (quiz_id)');
-        $this->addSql('ALTER TABLE tbl_workout ADD CONSTRAINT FK_3FCCF306853CD175 FOREIGN KEY (quiz_id) REFERENCES tbl_quiz (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE tbl_workout ADD last_question_id INT DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -34,7 +31,6 @@ final class Version20200228095019 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP SEQUENCE tbl_workout_id_seq CASCADE');
-        $this->addSql('DROP TABLE tbl_workout');
+        $this->addSql('ALTER TABLE tbl_workout DROP last_question_id');
     }
 }

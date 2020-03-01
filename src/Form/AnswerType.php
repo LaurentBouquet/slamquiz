@@ -40,7 +40,7 @@ class AnswerType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Answer::class,
-            'form_type' => 'student_questioning',            
+            'form_type' => 'teacher',            
         ]);
     }
 }

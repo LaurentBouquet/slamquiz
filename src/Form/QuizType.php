@@ -16,7 +16,7 @@ class QuizType extends AbstractType
         $builder
             ->add('title')
             ->add('summary')
-            ->add('number_of_questions')
+            ->add('current_question_number')
             ->add('active')
             // ->add('created_at')
             // ->add('updated_at')

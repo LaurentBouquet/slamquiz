@@ -37,7 +37,12 @@ class Workout
     /**
      * @ORM\Column(type="integer")
      */
-    private $number_of_questions;
+    private $current_question_number;
+    
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $last_question_id;
 
     /**
      * @ORM\Column(type="boolean")
@@ -48,6 +53,9 @@ class Workout
      * @ORM\Column(type="float", nullable=true)
      */
     private $score;
+
+
+
 
     public function getId(): ?int
     {
@@ -90,14 +98,26 @@ class Workout
         return $this;
     }
 
-    public function getNumberOfQuestions(): ?int
+    public function getCurrentQuestionNumber(): ?int
     {
-        return $this->number_of_questions;
+        return $this->current_question_number;
     }
 
-    public function setNumberOfQuestions(int $number_of_questions): self
+    public function setCurrentQuestionNumber(int $current_question_number): self
     {
-        $this->number_of_questions = $number_of_questions;
+        $this->current_question_number = $current_question_number;
+
+        return $this;
+    }
+
+    public function getLastQuestionId(): ?int
+    {
+        return $this->last_question_id;
+    }
+
+    public function setLastQuestionId(?int $last_question_id): self
+    {
+        $this->last_question_id = $last_question_id;
 
         return $this;
     }
@@ -125,4 +145,6 @@ class Workout
 
         return $this;
     }
+
+
 }

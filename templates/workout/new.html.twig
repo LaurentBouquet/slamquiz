@@ -1,21 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}"{{ quiz.title }}" ({{ workout.numberOfQuestions }}/{{ quiz.numberOfQuestions }}){% endblock %}
+{% block title %}Quiz "{{ quiz.title }}"
+{% endblock %}
 
 {% block body %}
-    <h1>"{{ quiz.title }}" ({{ workout.numberOfQuestions }}/{{ quiz.numberOfQuestions }})</h1>
+	<h1>Quiz "{{ quiz.title }}"</h1>
 
-    {{ form_start(form) }}
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Categories</th>
+				<td>
+					{% for category in quiz.categories %}
+						-
+						{{ category.longname }}
+						<br>
+					{% endfor %}
+				</td>
+			</tr>
+			<tr>
+				<th>Summary</th>
+				<td>{{ quiz.summary }}</td>
+			</tr>
+			<tr>
+				<th>current_question_number</th>
+				<td>{{ quiz.numberOfQuestions }}</td>
+			</tr>
 
-        {{ form_widget(form) }}
+		</tbody>
+	</table>
 
-        <div class="progress" style="height: 10px;">
-            <div class="progress-bar" role="progressbar" style="width: {{progress}}%;" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+	<div class="progress" style="height: 10px;">
+		<div class="progress-bar" role="progressbar" style="width: {{0}}%;" aria-valuenow="{{0}}" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
 
-        <button class="mt-3 float-right btn btn-primary mr-2" type="submit">{{ button_label|default('Next'|trans) }} <i class="fas fa-arrow-circle-right"></i></button>
-        
-        <a href="{{ path('workout_next', {'id': workout.id}) }}">next</a>
 
-    {{ form_end(form) }}
+	<form action="{{ path('workout_next', {'id': workout.id}) }}" method="post">
+		<a href="{{ path('quiz_index') }}">
+			<button class="mt-3 float-left btn btn-secondary mr-2">
+				<i class="fas fa-arrow-circle-left"></i>
+				Back to list
+			</button>
+		</a>
+		<button class="mt-3 float-right btn btn-primary mr-2" type="submit">{{ button_label|default('Start'|trans) }}
+			<i class="fas fa-arrow-circle-right"></i>
+		</button>
+	</form>
+
+
 {% endblock %}

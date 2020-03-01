@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}"{{ quiz.title }}" ({{ workout.currentQuestionNumber }}/{{ quiz.numberOfQuestions }}){% endblock %}
+
+{% block body %}
+    <h1>"{{ quiz.title }}" ({{ workout.currentQuestionNumber }}/{{ quiz.numberOfQuestions }})</h1>
+
+    {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        <div class="progress" style="height: 10px;">
+            <div class="progress-bar" role="progressbar" style="width: {{progress}}%;" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <button class="mt-3 float-right btn btn-primary mr-2" type="submit">{{ button_label|default('Next'|trans) }} <i class="fas fa-arrow-circle-right"></i></button>
+        
+        {# <a href="{{ path('workout_next', {'id': workout.id}) }}">next</a> #}
+
+    {{ form_end(form) }}
+{% endblock %}
